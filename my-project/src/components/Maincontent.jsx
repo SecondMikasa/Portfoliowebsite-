@@ -22,7 +22,7 @@ function Maincontent() {
                 Passionate about cloud computing, scalable architectures, and
                 leveraging AWS services to solve real-world problems.
               </p>
-              <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 sm:px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg">
+              <button  className="bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 sm:px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg">
                 View Resume
               </button>
             </div>
