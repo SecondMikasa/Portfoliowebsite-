@@ -1,18 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import profileImage from "../assets/contentsep.webp";
 import { FaInstagram, FaReddit, FaGithub, FaLinkedin, FaGoogle } from 'react-icons/fa'; 
 
 function Maincontent() {
     // State to manage dropdown selection for each exam
-  const [examStatus, setExamStatus] = useState({
-    cloudPractitioner: "About to Give",
-    solutionsArchitect: "Not Started",
-    professionalArchitect: "Not Started",
-  });
 
-  // Options for dropdown
-  const statusOptions = ["Not Started", "About to Give", "Given", "Cleared"];
 
   return (
     <>
@@ -118,8 +110,8 @@ function Maincontent() {
           </div>
         </section>
 
-        {/* AWS Certification Roadmap */}
-        <section className="py-20 px-6 bg-black text-white animate-fadeInUp">
+                {/* AWS Certification Roadmap */}
+                <section className="py-20 px-6 bg-black text-white animate-fadeInUp">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center text-yellow-400">
               AWS Certification Roadmap
@@ -151,22 +143,6 @@ function Maincontent() {
                     <h3 className="text-2xl font-semibold">{exam.title}</h3>
                     <p className="text-gray-400 mt-1">{exam.description}</p>
                   </div>
-                  <select
-                    value={examStatus[exam.key]}
-                    onChange={(e) =>
-                      setExamStatus({
-                        ...examStatus,
-                        [exam.key]: e.target.value,
-                      })
-                    }
-                    className="mt-4 md:mt-0 p-2 bg-gray-700 text-white rounded-md focus:outline-none "
-                  >
-                    {statusOptions.map((status) => (
-                      <option key={status} value={status}>
-                        {status}
-                      </option>
-                    ))}
-                  </select>
                 </div>
               ))}
             </div>
