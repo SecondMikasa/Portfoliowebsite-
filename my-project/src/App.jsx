@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Maincontent from "./components/Maincontent";
 import Docs from "./components/Docs"; // Import the new Docs component
 import Awsscripts from "./components/Awsscripts";
+import Awslearning from "./components/Awslearning";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Maincontent />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/awsscripts" element={<Awsscripts />} />
+          <Route path="/awslearning" element={<Awslearning />} />
         </Routes>
       </main>
       <Footer /> {/* Keep Footer as a standalone component */}
