@@ -1,127 +1,225 @@
-import React from 'react';
+import React, { useState } from "react";
 
 function Docs() {
+  const [activeSection, setActiveSection] = useState("#cloud-computing");
+
   return (
-    <div className="w-full min-h-screen bg-black text-gray-400">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
+    <div className="flex flex-col md:flex-row w-full min-h-screen bg-black text-gray-400">
+      {/* Sidebar */}
+      <aside className="w-full md:w-64 bg-gray-800 text-white p-4 md:p-6 fixed md:relative z-10 md:h-auto h-screen overflow-y-auto">
+        <h2 className="text-xl font-bold mb-4">Navigation</h2>
+        <nav className="space-y-2">
+          {[
+            { id: "#cloud-computing", title: "What is Cloud Computing?" },
+            { id: "#evolution", title: "How Did Cloud Computing Evolve?" },
+            { id: "#aws-cloud", title: "What is AWS Cloud?" },
+            { id: "#key-features", title: "Key Features of AWS" },
+            { id: "#why-cloud", title: "Why Choose Cloud Computing?" },
+            { id: "#aws-services", title: "AWS Services and Their Architecture" },
+            { id: "#aws-use-cases", title: "AWS Use Cases and Benefits" },
+            { id: "#aws-pricing", title: "AWS Pricing and Models" },
+          ].map((item) => (
+            <a
+              key={item.id}
+              href={item.id}
+              onClick={() => setActiveSection(item.id)}
+              className={`block px-4 py-2 rounded-lg ${
+                activeSection === item.id
+                  ? "bg-yellow-400 text-black"
+                  : "hover:bg-gray-700 hover:text-yellow-400"
+              }`}
+            >
+              {item.title}
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 max-w-6xl mx-auto px-4 py-6 md:px-10 md:py-10 mt-20 md:mt-0">
         <h1 className="text-4xl font-bold text-center text-yellow-400 mb-6">
           AWS Cloud and Fundamentals of Cloud Computing
         </h1>
 
-        <section className="space-y-8">
+        <section className="space-y-12">
           {/* Introduction to Cloud Computing */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">What is Cloud Computing?</h2>
+          <div id="cloud-computing">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              What is Cloud Computing?
+            </h2>
             <p className="leading-relaxed">
-              Cloud computing refers to the delivery of computing services, including servers, storage, databases, networking, software, analytics, and intelligence, over the Internet ("the cloud") to offer faster innovation, flexible resources, and economies of scale. Instead of owning physical data centers or servers, businesses can rent computing resources on-demand, only paying for what they use.
+              Cloud computing is the on-demand availability of computing
+              resources, including storage, databases, servers, networking, and
+              software, over the internet. Instead of owning their own physical
+              infrastructure or data centers, organizations can rent computing
+              power and storage as needed.
             </p>
+            <ul className="list-disc list-inside leading-relaxed">
+              <li>
+                On-demand resources allow businesses to scale up or down
+                efficiently.
+              </li>
+              <li>
+                Cloud services are offered by providers such as Amazon Web
+                Services (AWS), Microsoft Azure, and Google Cloud Platform
+                (GCP).
+              </li>
+            </ul>
           </div>
 
           {/* How Cloud Computing Evolved */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">How Did Cloud Computing Evolve?</h2>
+          <div id="evolution">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              How Did Cloud Computing Evolve?
+            </h2>
             <p className="leading-relaxed">
-              Cloud computing evolved as businesses sought more cost-effective and scalable solutions to manage IT infrastructure. Advances in virtualization technology, the proliferation of high-speed internet, and the shift towards "as-a-service" models paved the way for the cloud. Companies like Amazon, Google, and Microsoft spearheaded this evolution by offering scalable cloud platforms, making enterprise-grade infrastructure accessible to businesses of all sizes.
+              Cloud computing evolved from traditional IT infrastructure and
+              virtualization technologies. Its roots can be traced back to the
+              emergence of time-sharing systems in the 1960s. Key milestones
+              include:
             </p>
+            <ul className="list-disc list-inside leading-relaxed">
+              <li>
+                The introduction of virtualization in the early 2000s, allowing
+                efficient use of hardware resources.
+              </li>
+              <li>
+                The launch of Amazon Web Services (AWS) in 2006, which marked
+                the commercial availability of cloud services.
+              </li>
+              <li>
+                Rapid advancements in containerization technologies like
+                Docker, enhancing application portability.
+              </li>
+            </ul>
           </div>
 
           {/* What is AWS Cloud? */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">What is AWS Cloud?</h2>
+          <div id="aws-cloud">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              What is AWS Cloud?
+            </h2>
             <p className="leading-relaxed">
-              Amazon Web Services (AWS) is the world’s most comprehensive and broadly adopted cloud platform. It offers over 200 fully featured services from data centers globally, including computing, storage, networking, machine learning, and more. AWS enables businesses to innovate faster, reduce IT costs, and scale effortlessly to meet changing demands.
+              AWS (Amazon Web Services) is a comprehensive and widely adopted
+              cloud platform offering over 200 fully featured services from
+              data centers globally. AWS provides scalable, cost-effective, and
+              secure infrastructure for businesses of all sizes.
             </p>
+            <p className="leading-relaxed">
+              AWS services cover areas like:
+            </p>
+            <ul className="list-disc list-inside leading-relaxed">
+              <li>Compute (EC2, Lambda)</li>
+              <li>Storage (S3, EBS, Glacier)</li>
+              <li>Networking (VPC, Route 53)</li>
+              <li>Databases (RDS, DynamoDB)</li>
+            </ul>
           </div>
 
           {/* Key Features of AWS */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">Key Features of AWS</h2>
+          <div id="key-features">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              Key Features of AWS
+            </h2>
             <ul className="list-disc list-inside leading-relaxed">
-              <li>Broad and Deep Service Offering: AWS provides services across multiple domains, such as compute, storage, databases, AI, and IoT.</li>
-              <li>Global Infrastructure: AWS operates in multiple regions and availability zones to ensure high availability and fault tolerance.</li>
-              <li>Scalability: Resources can be scaled up or down as needed to accommodate business demands.</li>
-              <li>Pay-as-You-Go Pricing: AWS charges based on usage, eliminating the need for large upfront investments.</li>
-              <li>Security: AWS offers advanced security features, including encryption, identity management, and compliance certifications.</li>
+              <li>
+                <strong>Scalability:</strong> AWS can handle increased workloads
+                automatically with tools like Auto Scaling and Elastic Load
+                Balancing.
+              </li>
+              <li>
+                <strong>Global Reach:</strong> With data centers in multiple
+                regions worldwide, AWS ensures low latency and availability.
+              </li>
+              <li>
+                <strong>Security:</strong> AWS implements robust security
+                measures including encryption, compliance, and monitoring.
+              </li>
             </ul>
           </div>
 
           {/* Why Choose Cloud Computing? */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">Why Choose Cloud Computing?</h2>
-            <p className="leading-relaxed">
-              Cloud computing provides a variety of benefits that make it a preferred choice for businesses and developers:
-            </p>
+          <div id="why-cloud">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              Why Choose Cloud Computing?
+            </h2>
             <ul className="list-disc list-inside leading-relaxed">
-              <li>Cost Efficiency: Reduces capital expenditure on physical infrastructure.</li>
-              <li>Speed and Agility: Enables faster deployment of applications and services.</li>
-              <li>Flexibility: Access resources anytime, anywhere.</li>
-              <li>Innovation: Focus on core business operations while leveraging the latest technologies.</li>
+              <li>
+                <strong>Cost Efficiency:</strong> Pay only for the resources you
+                use, avoiding the need for upfront capital investment.
+              </li>
+              <li>
+                <strong>Flexibility:</strong> Access your resources anywhere,
+                anytime.
+              </li>
+              <li>
+                <strong>Disaster Recovery:</strong> Back up your data and
+                services in geographically dispersed locations.
+              </li>
             </ul>
           </div>
 
-          {/* AWS Services and Their Architecture */}
-          <div>
-            <h2 className="text-2xl font-semibold text-white mb-2">AWS Services and Their Working Architecture</h2>
-            <ul className="space-y-6 leading-relaxed">
+          {/* AWS Services */}
+          <div id="aws-services">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              AWS Services and Their Working Architecture
+            </h2>
+            <ul className="list-disc list-inside leading-relaxed">
               <li>
-                <strong>1. Amazon EC2:</strong> Provides scalable virtual servers in the cloud. Architecture includes virtual machines, storage, and networking resources managed via a hypervisor.
+                <strong>Amazon EC2:</strong> Virtual servers for running
+                applications.
               </li>
               <li>
-                <strong>2. Amazon S3:</strong> A scalable object storage service for data backup, archival, and analytics. Data is stored in buckets across multiple availability zones.
+                <strong>Amazon S3:</strong> Scalable object storage.
               </li>
               <li>
-                <strong>3. Amazon RDS:</strong> Managed relational database service supporting databases like MySQL, PostgreSQL, and Oracle. AWS handles setup, patching, and scaling.
+                <strong>Amazon RDS:</strong> Managed database services for SQL
+                and NoSQL.
+              </li>
+            </ul>
+          </div>
+
+          {/* AWS Use Cases */}
+          <div id="aws-use-cases">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              AWS Use Cases and Benefits
+            </h2>
+            <ul className="list-disc list-inside leading-relaxed">
+              <li>
+                <strong>Web Hosting:</strong> Host websites and web
+                applications with high availability.
               </li>
               <li>
-                <strong>4. AWS Lambda:</strong> Serverless compute service that runs code in response to events. Architecture uses event sources, triggers, and execution environments.
+                <strong>Data Analytics:</strong> Analyze large datasets using
+                tools like AWS Redshift.
               </li>
               <li>
-                <strong>5. Amazon DynamoDB:</strong> NoSQL database designed for high availability and low-latency access. Uses a distributed architecture for scaling.
+                <strong>Machine Learning:</strong> Build and deploy AI models
+                with AWS SageMaker.
+              </li>
+            </ul>
+          </div>
+
+          {/* AWS Pricing */}
+          <div id="aws-pricing">
+            <h2 className="text-2xl font-semibold text-white mb-2">
+              AWS Pricing and Models
+            </h2>
+            <p className="leading-relaxed">
+              AWS offers several pricing models, including:
+            </p>
+            <ul className="list-disc list-inside leading-relaxed">
+              <li>
+                <strong>Pay-as-you-go:</strong> Only pay for the resources you
+                use.
               </li>
               <li>
-                <strong>6. Amazon CloudFront:</strong> A Content Delivery Network (CDN) for fast delivery of content. Uses edge locations for caching and reducing latency.
+                <strong>Reserved Instances:</strong> Commit to long-term usage
+                for cost savings.
               </li>
               <li>
-                <strong>7. AWS IAM:</strong> Manages user access and permissions securely. Uses roles, policies, and multi-factor authentication (MFA).
-              </li>
-              <li>
-                <strong>8. Amazon VPC:</strong> Virtual Private Cloud for isolating resources in a secure network. Supports subnets, route tables, and network gateways.
-              </li>
-              <li>
-                <strong>9. AWS CloudFormation:</strong> Automates infrastructure provisioning using templates. Architecture enables declarative resource management.
-              </li>
-              <li>
-                <strong>10. Amazon EBS:</strong> Block storage for use with EC2 instances. Provides persistent storage for applications and databases.
-              </li>
-              <li>
-                <strong>11. AWS Auto Scaling:</strong> Automatically adjusts resources based on demand. Works with EC2 and other services for cost efficiency.
-              </li>
-              <li>
-                <strong>12. Amazon Elastic Beanstalk:</strong> Platform as a Service (PaaS) for deploying and scaling web applications. Manages infrastructure and deployment.
-              </li>
-              <li>
-                <strong>13. AWS Glue:</strong> Managed ETL (Extract, Transform, Load) service for data integration. Uses a serverless architecture for processing.
-              </li>
-              <li>
-                <strong>14. Amazon Redshift:</strong> Data warehouse for analytics. Uses a cluster-based architecture for parallel query execution.
-              </li>
-              <li>
-                <strong>15. AWS CloudTrail:</strong> Tracks user activity and API usage for security and compliance. Logs are stored in S3 for analysis.
-              </li>
-              <li>
-                <strong>16. Amazon SNS:</strong> Simple Notification Service for sending messages to subscribers. Uses a publish-subscribe architecture.
-              </li>
-              <li>
-                <strong>17. Amazon SQS:</strong> Simple Queue Service for message queuing. Supports decoupled application components with reliable message delivery.
-              </li>
-              <li>
-                <strong>18. AWS Elastic Load Balancing:</strong> Distributes incoming application traffic across multiple targets for scalability and reliability.
-              </li>
-              <li>
-                <strong>19. AWS Step Functions:</strong> Orchestrates workflows using state machines. Simplifies application logic with visual representation.
-              </li>
-              <li>
-                <strong>20. AWS CodePipeline:</strong> Automates software release pipelines. Integrates with various AWS and third-party tools for CI/CD workflows.
+                <strong>Spot Instances:</strong> Purchase unused capacity at a
+                discounted rate.
               </li>
             </ul>
           </div>
