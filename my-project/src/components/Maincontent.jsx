@@ -1,5 +1,5 @@
 import React from 'react';
-import profileImage from "../assets/contentsep.webp";
+import kinshuk from "../assets/contentsep.webp";
 import { FaInstagram, FaReddit, FaGithub, FaLinkedin, FaGoogle } from 'react-icons/fa'; 
 
 function Maincontent() {
@@ -30,7 +30,7 @@ function Maincontent() {
             {/* Right Content */}
             <div className="flex justify-center items-center">
               <img
-                src={profileImage}
+                src={kinshuk}
                 alt="Profile"
                 className="w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 rounded-full shadow-2xl object-cover border-4 border-yellow-500 transform hover:scale-110 transition-transform duration-300"
               />
